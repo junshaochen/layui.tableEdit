@@ -8,7 +8,7 @@
 
 | 参数           | 类型               | 默认值                 |描述                                                           |
 |----------------|--------------------|------------------------|---------------------------------------------------------------|
-| tableId           | string/object      | -                      | table对象ID              |
+| tableId           | string      | -                      | table对象ID              |
 | tableObj           | object             | null                   | table渲染后的对象    |
 | addEmptyRow           | bool            | true                      | 是否自动添加新行                         |
 | emptyRowData         | object             | {}                    | 新行默认数据                                    |
