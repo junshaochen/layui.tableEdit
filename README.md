@@ -22,6 +22,8 @@ customer：自定渲染（默认创建一个input）
 number：只能输入数字的文本框
 float：只能输入数字和小数的文本框
 
+例：{field:'key', width:150,editRow:'customer'}
+
 ## Demo展示
 ![Demo](https://github.com/junshaochen/layui.tableEdit/blob/master/demo.gif)
 
