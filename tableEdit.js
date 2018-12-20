@@ -11,8 +11,9 @@
                 tableObj: null,//渲染后的table对象 tableId 和 tableObj 二选一
                 addEmptyRow: true,//是否自动添加空行
                 emptyRowData: {},//空行数据，请根据表格数据格式添加
-                rowEditChange: function (data, field) { },//编辑数据改变时回调
-                rowEditRender: function (field, inputId, rowData) { }//自定义渲染编辑框时回调 当 editRow="customer" 触发回调
+                rowEditChange:null,// function (data, field) { },//编辑数据改变时回调 当 editRow="customer" 触发回调
+                rowEditCustomer: null,//function (field, rowData) { return null; },//自定义编辑框渲染，返回Jquery对象
+                rowEditRender: null,//function (field, inputId, rowData) { }//自定义渲染编辑框时回调 当 editRow="customer" 触发回调
             }
         },
         thisEdit = function () {
@@ -80,6 +81,17 @@
                             createFunc;
                         switch (one.editRow) {
                             case "customer":
+                                if (that.config.rowEditCustomer) {
+                                    var $obj = that.config.rowEditCustomer(one.field, rowData);
+                                    if ($obj) {
+                                        var div = $('<div style="' + style + ';padding:0;"></div>');
+                                        div.append($obj);
+                                        $td.append(div);
+                                        if (layui.form)
+                                            layui.form.render();
+                                        break;
+                                    }
+                                }
                                 createFunc = createCustomerInput;
                                 break;
                             case "number":
