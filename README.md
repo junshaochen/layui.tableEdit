@@ -8,7 +8,7 @@
 
 | 参数           | 类型               | 默认值                 |描述                                                           |
 |----------------|--------------------|------------------------|---------------------------------------------------------------|
-| tableId           | string/object      | -                      | table对象ID              |
+| tableId           | string      | -                      | table对象ID              |
 | tableObj           | object             | null                   | table渲染后的对象    |
 | addEmptyRow           | bool            | true                      | 是否自动添加新行                         |
 | emptyRowData         | object             | {}                    | 新行默认数据                                    |
@@ -21,6 +21,8 @@
 customer：自定渲染（默认创建一个input）
 number：只能输入数字的文本框
 float：只能输入数字和小数的文本框
+
+例：{field:'key', width:150,editRow:'customer'}
 
 ## Demo展示
 ![Demo](https://github.com/junshaochen/layui.tableEdit/blob/master/demo.gif)
