@@ -18,15 +18,20 @@
 
 
 ## 获取编辑后数据
+
 var tableEditObj = tableEidt.render(options);
+
 var data = tableEditObj.data();
 
 ## table cols 参数扩展
 扩展 editRow = "customer|number|float"
 
 customer：自定渲染（默认创建一个input）
+
 number：只能输入数字的文本框
+
 float：只能输入数字和小数的文本框
+
 
 例：{field:'key', width:150,editRow:'customer'}
 
