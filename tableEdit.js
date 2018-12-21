@@ -125,7 +125,7 @@
     //重载表格
     editClass.prototype.reload = function (data) {
         data = data || this.tableObj.config.data;
-        if (data) {
+        if (data && data.length > 0) {
             if (this.config.addEmptyRow) {
                 //判断是否存在空行
                 var lastRow = data[data.length - 1], haveEmptyRow = true;
@@ -143,11 +143,16 @@
     }
     //获取编辑数据
     editClass.prototype.getData = function () {
-        var d = JSON.parse(JSON.stringify(this.tableObj.config.data));
-        $.each(d, function (i, one) {
-            one.row = one.LAY_TABLE_INDEX + 1;
-            delete one.LAY_TABLE_INDEX;
-        });
+        var d = JSON.parse(JSON.stringify(table.cache[this.tableObj.config.id]));
+        for (var i = d.length - 1; i >= 0; i--) {
+            var one = d[i];
+            if (one.length == 0)
+                d = d.splice(i, 1);
+            else {
+                one.row = one.LAY_TABLE_INDEX + 1;
+                delete one.LAY_TABLE_INDEX;
+            }
+        }
         //排除空行
         if (this.config.addEmptyRow)
             d.splice(d.length - 1, 1);
